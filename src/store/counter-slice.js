@@ -15,6 +15,9 @@ const counterSlice = createSlice({
         decrement: (state) => {
             state.counterValue -= 1;
         },
+        incrementBy: (state, action) => {
+            state.counterValue += action.payload.stepBy;
+        },
         togle: (state) => {
             state.show = !state.show;
         }
