@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import classes from './Counter.module.css';
 import { counterActions } from '../store/counter-slice';
 
+const stepBy = 10;
+
 const Counter = () => {
 
   const counterValue = useSelector(actualState => actualState.counter.counterValue);
@@ -15,6 +17,9 @@ const Counter = () => {
   const handleDecrement = () => {
     dispacth(counterActions.decrement());
   };
+  const handleInvcrementBy = () => {
+    dispacth(counterActions.incrementBy({stepBy}));
+  };
 
   const toggleCounterHandler = () => {
     dispacth(counterActions.togle())
@@ -27,8 +32,9 @@ const Counter = () => {
       <div>
         <button onClick={handleDecrement}> Decrement (-) </button>
         <button onClick={handleIncrement}> Increment (+) </button>
+      <button onClick={handleInvcrementBy}> Increment by {stepBy} (+) </button>
       </div>
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+      <button onClick={toggleCounterHandler}> {counterShow ? 'Hidde <<<': 'Show >>>'} Counter </button>
     </main>
   );
 };
